@@ -1,4 +1,8 @@
 import { Injectable } from '@nestjs/common';
+import { Post } from 'src/entities/post.entity';
+
+// export type User = { id: number; name: string; email: string; role: string, posts: number[] };
+// export type Post = { id: number; content: string; };
 
 @Injectable()
 export class UsersService {
@@ -103,13 +107,17 @@ export class UsersService {
         return removedUser
     }
 
-    getPostsForUser(userId: number) {
-        const u = this.users.find(x => x.id === userId);
-        if (!u) {
-            return [];
-        }
-        // filter step ensures proper behavior if an invalid post.id is referenced
-        return u.posts.map(id => this.posts.find(p => p.id === id))
-            .filter(p => !!p);
+    batchPostsByUsers(userIds: readonly number[]): Post[][] {
+        console.log('getpost', {userIds});
+        const returnValue = userIds.map(id => {
+            const u = this.users.find(x => x.id === id);
+            return !u
+                ? []
+                : u.posts
+                    .map(pId => this.posts.find(p => p.id === pId))
+                    .filter((p): p is Post => !!p);
+        });
+        console.log(returnValue);
+        return returnValue;
     }
 }

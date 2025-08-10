@@ -5,7 +5,9 @@ Thanks to `gitdagray` for initial skeleton for this project: https://github.com/
 The initial skeleton provides REST endpoints for doing CRUD operations on `users` which is an in memory list of users and their attributes.
 
 ### TODO:
-- [ x ] incorporate a GraphQL interface
+- [ x ] Incorporate a GraphQL interface.
+- [ x ] Implement a parent child relationship with an in-memor `posts` collection.
+- [ x ] Implement a dataloader to optimize retrieval of user posts.
 
 ### Objectives Met
 Access the GraphQL Playground at http://localhost:3000/graphql

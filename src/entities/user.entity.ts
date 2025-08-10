@@ -16,10 +16,14 @@ export class User {
 
   @Field()
   @Column()
-  username: string;
+  name: string;
 
   @Field()
   @Column()
   email: string;
+
+  @Field()
+  @Column()
+  role: string;
 
 }

@@ -5,7 +5,16 @@ Thanks to `gitdagray` for initial skeleton for this project: https://github.com/
 The initial skeleton provides REST endpoints for doing CRUD operations on `users` which is an in memory list of users and their attributes.
 
 ### TODO:
-- [ ] incorporate a GraphQL interface
+- [ x ] incorporate a GraphQL interface
+
+### Objectives Met
+Access the GraphQL Playground at http://localhost:3000/graphql
+
+The graphql API can now satisfy the following queries:
+```
+# users corresponds to the name given to the "findAll" resolver
+{users {id, name, email, role}}
+```
 
 ## Installation
 

@@ -4,6 +4,8 @@ import { UsersService } from './users.service';
 
 @Module({
     controllers: [UsersController],
-    providers: [UsersService]
+    providers: [UsersService],
+    // export service so it can be used in `user-graphql` module
+    exports: [UsersService]
 })
 export class UsersModule { }

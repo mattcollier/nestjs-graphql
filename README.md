@@ -1,5 +1,5 @@
 ## Attribution
-Thanks to `gitdagray` for initial skeleton for this project: https://github.com/gitdagray/nestjs-course
+Thanks to `gitdagray` for initial skeleton for this project: https://github.com/gitdagray/nestjs-course. The graphql implementation was inspired by: https://github.com/vahid-nejad/nestjs-graphql-course.
 
 ## Description
 The initial skeleton provides REST endpoints for doing CRUD operations on `users` which is an in memory list of users and their attributes.

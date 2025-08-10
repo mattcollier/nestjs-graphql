@@ -8,6 +8,7 @@ The initial skeleton provides REST endpoints for doing CRUD operations on `users
 - [ x ] Incorporate a GraphQL interface.
 - [ x ] Implement a parent child relationship with an in-memor `posts` collection.
 - [ x ] Implement a dataloader to optimize retrieval of user posts.
+- [ x ] Implement a mutation with DTO validations for creating a new user.
 
 ### Objectives Met
 Access the GraphQL Playground at http://localhost:3000/graphql
@@ -19,6 +20,16 @@ The graphql API can now satisfy the following queries:
 
 # with posts
 {users {id, name, email, role, posts {content}}}
+
+# create a user, returns the new user with the `id` created on the server
+mutation {
+  createUser(createUserInput: {  email: "alice@example.com", role: ADMIN, name: "Alice" }) {
+    name
+    role
+    email
+    id
+  }
+}
 ```
 
 ## Installation

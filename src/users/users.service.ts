@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { Post } from 'src/entities/post.entity';
+import { Role } from 'src/entities/enums/role.enum';
 
 // export type User = { id: number; name: string; email: string; role: string, posts: number[] };
 // export type Post = { id: number; content: string; };
@@ -75,14 +76,15 @@ export class UsersService {
     create(user: {
         name: string,
         email: string,
-        role: 'INTERN' | 'ENGINEER' | 'ADMIN',
-        posts: number[]
+        // role: 'INTERN' | 'ENGINEER' | 'ADMIN',
+        role: Role,
     }
     ) {
         const usersByHighestId = [...this.users].sort((a, b) => b.id - a.id)
         const newUser = {
             id: usersByHighestId[0].id + 1,
-            ...user
+            ...user,
+            posts: []
         }
         this.users.push(newUser)
         return newUser

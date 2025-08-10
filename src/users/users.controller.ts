@@ -16,8 +16,8 @@ export class UsersController {
         return this.usersService.findOne(+id)
     }
 
-    @Post() // POST /users 
-    create(@Body() user: { name: string, email: string, role: 'INTERN' | 'ENGINEER' | 'ADMIN' }) {
+    @Post() // POST /users
+    create(@Body() user: { name: string, email: string, role: 'INTERN' | 'ENGINEER' | 'ADMIN', posts: number[]}) {
         return this.usersService.create(user)
     }
 

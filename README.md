@@ -14,6 +14,9 @@ The graphql API can now satisfy the following queries:
 ```
 # users corresponds to the name given to the "findAll" resolver
 {users {id, name, email, role}}
+
+# with posts
+{users {id, name, email, role, posts {content}}}
 ```
 
 ## Installation

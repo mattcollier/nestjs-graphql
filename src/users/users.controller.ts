@@ -1,5 +1,6 @@
 import { Body, Controller, Delete, Get, Param, Patch, Post, Query } from '@nestjs/common';
 import { UsersService } from './users.service';
+import { Role } from 'src/entities/enums/role.enum';
 
 @Controller('users')
 export class UsersController {
@@ -7,7 +8,7 @@ export class UsersController {
     constructor(private readonly usersService: UsersService) { }
 
     @Get() // GET /users or /users?role=value
-    findAll(@Query('role') role?: 'INTERN' | 'ENGINEER' | 'ADMIN') {
+    findAll(@Query('role') role?: Role) {
         return this.usersService.findAll(role)
     }
 
@@ -17,12 +18,12 @@ export class UsersController {
     }
 
     @Post() // POST /users
-    create(@Body() user: { name: string, email: string, role: 'INTERN' | 'ENGINEER' | 'ADMIN', posts: number[]}) {
+    create(@Body() user: { name: string, email: string, role: Role, posts: number[]}) {
         return this.usersService.create(user)
     }
 
     @Patch(':id') // PATCH /users/:id
-    update(@Param('id') id: string, @Body() userUpdate: { name?: string, email?: string, role?: 'INTERN' | 'ENGINEER' | 'ADMIN' }) {
+    update(@Param('id') id: string, @Body() userUpdate: { name?: string, email?: string, role?: Role }) {
         return this.usersService.update(+id, userUpdate)
     }
 

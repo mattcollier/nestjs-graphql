@@ -60,7 +60,8 @@ export class UsersService {
         }
     ]
 
-    findAll(role?: 'INTERN' | 'ENGINEER' | 'ADMIN') {
+    findAll(role?: Role) {
+        console.log(this.users);
         if (role) {
             return this.users.filter(user => user.role === role)
         }
@@ -76,7 +77,6 @@ export class UsersService {
     create(user: {
         name: string,
         email: string,
-        // role: 'INTERN' | 'ENGINEER' | 'ADMIN',
         role: Role,
     }
     ) {
@@ -90,7 +90,7 @@ export class UsersService {
         return newUser
     }
 
-    update(id: number, updatedUser: { name?: string, email?: string, role?: 'INTERN' | 'ENGINEER' | 'ADMIN' }) {
+    update(id: number, updatedUser: { name?: string, email?: string, role?: Role }) {
         this.users = this.users.map(user => {
             if (user.id === id) {
                 return { ...user, ...updatedUser }

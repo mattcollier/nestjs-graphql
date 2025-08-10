@@ -108,7 +108,6 @@ export class UsersService {
     }
 
     batchPostsByUsers(userIds: readonly number[]): Post[][] {
-        console.log('getpost', {userIds});
         const returnValue = userIds.map(id => {
             const u = this.users.find(x => x.id === id);
             return !u
@@ -117,7 +116,6 @@ export class UsersService {
                     .map(pId => this.posts.find(p => p.id === pId))
                     .filter((p): p is Post => !!p);
         });
-        console.log(returnValue);
         return returnValue;
     }
 }

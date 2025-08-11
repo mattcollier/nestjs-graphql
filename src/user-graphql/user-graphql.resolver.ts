@@ -1,4 +1,4 @@
-import { Args, Context, Mutation, Parent, Query, ResolveField, Resolver } from '@nestjs/graphql';
+import { Args, Context, Int, Mutation, Parent, Query, ResolveField, Resolver } from '@nestjs/graphql';
 import { CreateUserInput } from './dto/create-user-input';
 import { User } from '../entities/user.entity';
 import { UsersService } from '../users/users.service';
@@ -13,6 +13,11 @@ export class UserGraphqlResolver {
   @Query(() => [User], { name: 'users' })
   async findAll() {
     return await this.usersService.findAll();
+  }
+
+  @Query(() => User)
+  user(@Args('id', { type: () => Int }) id: number) {
+    return this.usersService.findOne(id);
   }
 
   @ResolveField(() => [Post])

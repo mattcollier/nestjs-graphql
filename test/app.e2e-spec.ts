@@ -33,6 +33,21 @@ describe('AppController (e2e)', () => {
       expect(response.body.data.users).toHaveLength(5);
     });
 
+    it('Gets one user', async () => {
+      const response = await request(app.getHttpServer())
+        .post('/graphql')
+        .send({"query":"query {user(id: 1) { id name }}"})
+        .set('Accept', 'application/json');
+      expect(response.body.data).toHaveProperty('user');
+      const {user} = response.body.data;
+      expect(user).toHaveProperty("id");
+      expect(user).toHaveProperty("name");
+      // only 2 properties
+      expect(Object.keys(user)).toHaveLength(2);
+      expect(user.id).toStrictEqual(1);
+      expect(user.name).toStrictEqual('Leanne Graham');
+    });
+
     it('Successfully creates a user', async () => {
       const response = await request(app.getHttpServer())
         .post('/graphql')
@@ -52,7 +67,6 @@ describe('AppController (e2e)', () => {
         .post('/graphql')
         .send({"query":'mutation {createUser(createUserInput: {  email: "adam@example.com", role: SUPERUSER, name: "adam" }) {name role email id}}'})
         .set('Accept', 'application/json');
-      console.log(response.body);
       expect(response.body).toHaveProperty("errors");
       expect(response.body.errors).toHaveLength(1);
       const [error] = response.body.errors;

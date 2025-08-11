@@ -1,5 +1,5 @@
 import { Field, InputType } from '@nestjs/graphql';
-import { IsDefined, IsEmail, IsEnum, IsString, minLength, MinLength } from 'class-validator';
+import { IsEmail, IsEnum, IsString, MinLength} from 'class-validator';
 import { Role } from 'src/entities/enums/role.enum';
 
 @InputType()

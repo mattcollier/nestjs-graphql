@@ -1,6 +1,6 @@
 import { Body, Controller, Delete, Get, Param, Patch, Post, Query } from '@nestjs/common';
 import { UsersService } from './users.service';
-import { Role } from 'src/entities/enums/role.enum';
+import { Role } from '../entities/enums/role.enum';
 
 @Controller('users')
 export class UsersController {

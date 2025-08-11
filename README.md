@@ -9,6 +9,8 @@ The initial skeleton provides REST endpoints for doing CRUD operations on `users
 - [ x ] Implement a parent child relationship with an in-memor `posts` collection.
 - [ x ] Implement a dataloader to optimize retrieval of user posts.
 - [ x ] Implement a mutation with DTO validations for creating a new user.
+- [ x ] Implement a user query to retrieve a single user.
+- [ x ] Add additional e2e tests for GraphQL API.
 
 ### Objectives Met
 Access the GraphQL Playground at http://localhost:3000/graphql

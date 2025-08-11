@@ -61,7 +61,6 @@ export class UsersService {
     ]
 
     findAll(role?: Role) {
-        console.log(this.users);
         if (role) {
             return this.users.filter(user => user.role === role)
         }

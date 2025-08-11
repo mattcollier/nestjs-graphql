@@ -15,7 +15,7 @@ export class UserGraphqlResolver {
     return await this.usersService.findAll();
   }
 
-  @Query(() => User)
+  @Query(() => User, {name: 'user'})
   user(@Args('id', { type: () => Int }) id: number) {
     return this.usersService.findOne(id);
   }

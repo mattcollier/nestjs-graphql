@@ -15,13 +15,16 @@ The initial skeleton provides REST endpoints for doing CRUD operations on `users
 ### Objectives Met
 Access the GraphQL Playground at http://localhost:3000/graphql
 
-The graphql API can now satisfy the following queries:
+The GraphQL API can now satisfy the following queries:
 ```
 # users corresponds to the name given to the "findAll" resolver
 {users {id, name, email, role}}
 
 # with posts
 {users {id, name, email, role, posts {content}}}
+
+# get a single user
+{user(id: 1) { id name email role }}
 
 # create a user, returns the new user with the `id` created on the server
 mutation {
